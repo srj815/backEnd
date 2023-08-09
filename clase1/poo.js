@@ -166,3 +166,61 @@ nombrarParticipantes() por cada participante debera decir el nombre y apellido d
 pagarSueldos() por cada participante activara el metodo pagar sueldo
 
 */
+
+
+
+class Proyecto{ 
+    constructor(nombre, precio, categoria, duracionEstimada){ 
+        this.nombre = nombre 
+        this.precio = precio 
+        this.categoria = categoria 
+        this.duracionEstimada = duracionEstimada 
+        this.participantes = [] 
+    } 
+
+        agregarParticipante(participante){ 
+        this.participantes.push(participante)
+    }
+
+/*         eliminarParticipante(nombre) {
+    const indice = this.participantes.findIndex(participante => participante === nombre);
+    if (indice !== -1) {
+        this.participantes.splice(indice, 1);
+    } */
+    eliminarParticipante(nombre) {
+        this.participantes = this.participantes.filter(participante => participante.nombre !== nombre)
+        }
+
+    reestimarElProyecto(nuevaEstimacion){
+    this.duracionEstimada = nuevaEstimacion
+    }
+
+/*     nombrarParticipante(participante){
+        console.log(`Participante: ${this.nombre} ${this.apellido}`)
+} */
+        nombrarParticipante(participante){
+        this.participantes.forEach( participante => {console.log(`Participante: ${this.nombre} ${this.apellido}`)})
+}
+
+        pagar(){
+            this.participantes.forEach(participante => {participante.pagarSueldo()})
+        }
+}
+
+
+
+
+class Participante{ 
+    constructor(nombre, apellido, dinero, amigos, remuneración){ 
+        this.nombre = nombre 
+        this.apellido = apellido
+        this.dinero = 0
+        this.amigos = [] 
+        this.remuneracion = remuneracion
+    } 
+
+    pagarSueldo(){
+    this.dinero += this.remuneracion
+}
+}
+
